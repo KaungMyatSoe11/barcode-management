@@ -18,6 +18,8 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         // if (username == "admin" && password == "admin123") {
         //   return { id: 1, name: "super admin", email: "admin@sldfjkl.com" };
         // }
+        console.log(data);
+
         if (!data) {
           throw new Error("Invalid credentials");
         }
@@ -25,19 +27,22 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       },
     }),
   ],
-//   callbacks: {
-//     async jwt({ token, user }) {
-//       console.log("token");
-
-//       console.log(token, user);
-//       token = { ...user };
-//       return token;
-//     },
-//     async session({ session, user }) {
-//       console.log("session");
-//       session = { ...user };
-
-//       return session;
-//     },
-//   },
+  pages: {
+    signIn: "/auth/login",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token = { ...user };
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user = { ...token };
+        session.id = token.id;
+      }
+      return session;
+    },
+  },
 });

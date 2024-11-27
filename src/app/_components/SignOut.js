@@ -4,12 +4,12 @@ import { signOut } from "next-auth/react";
 import React from "react";
 
 const SignOut = () => {
-  const singInHandler = () => {
+  const SingOutHandler = () => {
     signOut();
   };
   return (
     <div>
-      <Button onClick={singInHandler}>Sign In </Button>
+      <Button onClick={SingOutHandler}>Sign Out </Button>
     </div>
   );
 };
