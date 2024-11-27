@@ -18,7 +18,7 @@ import {
 import useMember from "@/hooks/useMember";
 const DataTable = () => {
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 1 });
-  const { data, isLoading,isFetching } = useMember(
+  const { data, isLoading, isFetching } = useMember(
     pagination.pageIndex,
     pagination.pageSize
   );
@@ -131,7 +131,7 @@ const DataTable = () => {
             table.setPageSize(Number(e.target.value));
           }}
         >
-          {[1,5,10, 20, 30, 40, 50].map((pageSize) => (
+          {[1, 5, 10, 20, 30, 40, 50].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
