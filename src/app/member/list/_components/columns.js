@@ -1,3 +1,4 @@
+import ActionColumn from "./ActionColumn";
 import ImageView from "./ImageView";
 
 const { createColumnHelper } = require("@tanstack/react-table");
@@ -11,9 +12,9 @@ export const columns = [
   columnHelper.accessor("vip_code", {
     header: () => <span>VIP Code</span>,
   }),
-  columnHelper.accessor("_id",{
-    header:()=>"Image",
-    cell:(info)=> <ImageView member_id={info.getValue()}/>
+  columnHelper.accessor("_id", {
+    header: () => "Image",
+    cell: (info) => <ImageView member_id={info.getValue()} />,
   }),
   columnHelper.accessor("createdBy", {
     header: () => "Created By",
@@ -32,4 +33,9 @@ export const columns = [
       );
     },
   }),
+  {
+    id: "action",
+    header: "#",
+    cell: ({ row }) => <ActionColumn member={row.original} />,
+  },
 ];

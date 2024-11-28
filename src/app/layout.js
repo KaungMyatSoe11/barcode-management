@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "./providers";
 import Link from "next/link";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,10 @@ export default function RootLayout({ children }) {
           <Link href={"/member/list"}>Member page</Link>
           <Link href={"/member/create"}>Create page</Link>
         </header>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="container mx-auto">{children}</div>
+          <Toaster richColors />
+        </Providers>
       </body>
     </html>
   );

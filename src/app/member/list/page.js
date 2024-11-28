@@ -1,12 +1,15 @@
 "use client";
-import useMember from "@/hooks/useMember";
 import React from "react";
 import DataTable from "./_components/DataTable";
+import CreateMember from "./_components/CreateMember";
 
 const MemberList = () => {
   return (
-    <div>
-      MemberList
+    <div className="space-y-5 mt-5">
+      {/* form */}
+      <CreateMember />
+      
+   
       <DataTable />
     </div>
   );
